@@ -36,6 +36,11 @@
     
     var value1, value2, calFormular, Result;
     
+    let plusCount = 0;
+    let minCount = 0;
+    let divCount = 0;
+    let mulCount = 0;
+
     value1 = [];
     value2 = [];
     calFormular = [];
@@ -64,14 +69,34 @@
       }
     }
 
-    function AddNumbers(num1, num2){
+    function AddNumbers(number){
+      let sum = 0;
+      let tempResult = Result[0];
+      // let strNumber = value1.join("");
       
-      let strNumber1 = num1.join("");
-      let strNumber2 = num2.join("");
-      let numValue1 = Number(strNumber1);
-      let numValue2 = Number(strNumber1);
+      // return result[0] + number
+      // if result.length == 0, result[0] = 0,
+      //   return[0] + number
+      // else
+      // retunn return[0] + number
+      
+      // how to track this is first time hit +?
+      if (plusCount == 0){
+        sum = 0 + Number(number);
+        Result.push(sum);
+      } else {
+        sum = tempResult + Number(number);
 
-      return numValue1 + numValue2;
+      }
+
+      // add number to result
+      console.log("plusCount", plusCount);
+      console.log("Result:", Result[0]);
+      console.log("temResult:" + tempResult);
+      console.log("sum:" + sum);
+      
+      // diaply result in textbox
+      textbox.value = sum;
     }
 
 
@@ -116,11 +141,12 @@
           // append result
           let strNumber = value1.join("");
           Result.push(Number(strNumber));
-          value1 = [];
           
           textbox.value = "";
+          AddNumbers(strNumber)
           
-          console.log("Result:", Result[0]);
+          value1 = [];
+          plusCount = plusCount + 1;
 
           break;
         case 66:
@@ -145,19 +171,30 @@
           break;
         case 22:
           // Result
-          
-          calculate();
-
+          textbox.value = Result[0]
+          // reset value & result
+          value1 = [];
+          Result = [];
           break;
         case 33:
           // AC
           // empty array, reset it to 0
           value1 = [];
-          calFormular = [];
+          Result = [];
+          // calFormular = [];
           textbox.value = 0;
           break;
       }
     }
+
+    // number
+    // +
+    // return result[0] + number
+    // if result.length == 0, result[0] = 0,
+    //   return[0] + number
+    // else
+    // retunn return[0] + number
+
 
     function calculate(n_code) {
       
