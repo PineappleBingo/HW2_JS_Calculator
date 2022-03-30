@@ -42,11 +42,11 @@
     let mulCount = 0;
 
     value1 = [];
-    value2 = [];
-    calFormular = [];
-    Result = [];
+    // value2 = [];
+    // calFormular = [];
+    Result = 0;
 
-    function concatNumber(number){
+    function displayValue(number){
       // append number.toString to vale1 array
       value1.push(number.toString());
       // concat input numbers
@@ -71,34 +71,15 @@
 
     function AddNumbers(number){
       let sum = 0;
-      let tempResult = Result[0];
-      // let strNumber = value1.join("");
-      
-      // return result[0] + number
-      // if result.length == 0, result[0] = 0,
-      //   return[0] + number
-      // else
-      // retunn return[0] + number
-      
-      // how to track this is first time hit +?
       if (plusCount == 0){
         sum = 0 + Number(number);
-        Result.push(sum);
+        Result = sum;
       } else {
-        sum = tempResult + Number(number);
-
+        sum = Result + Number(number);
+        Result = sum;
       }
-
-      // add number to result
-      console.log("plusCount", plusCount);
-      console.log("Result:", Result[0]);
-      console.log("temResult:" + tempResult);
-      console.log("sum:" + sum);
-      
-      // diaply result in textbox
-      textbox.value = sum;
+      textbox.value = Result;
     }
-
 
     function inputValue(number){
       
@@ -106,47 +87,45 @@
 
       switch (number) {
         case 1:
-          textbox.value = concatNumber(1);
+          textbox.value = displayValue(1);
           break;
         case 2:
-          textbox.value = concatNumber(2);
+          textbox.value = displayValue(2);
           break;
         case 3:
-          textbox.value = concatNumber(3);
+          textbox.value = displayValue(3);
           break;
         case 4:
-          textbox.value = concatNumber(4);
+          textbox.value = displayValue(4);
           break;
         case 5:
-          textbox.value = concatNumber(5);
+          textbox.value = displayValue(5);
           break;
         case 6:
-          textbox.value = concatNumber(6);
+          textbox.value = displayValue(6);
           break;
         case 7:
-          textbox.value = concatNumber(7);
+          textbox.value = displayValue(7);
           break;
         case 8:
-          textbox.value = concatNumber(8);
+          textbox.value = displayValue(8);
           break;
         case 9:
-          textbox.value = concatNumber(9);
+          textbox.value = displayValue(9);
           break;
         case 0:
-          textbox.value = concatNumber(0);
+          textbox.value = displayValue(0);
           break;
         case 55:
           // Plus
-          // append calculate formular code
-          // append result
           let strNumber = value1.join("");
-          Result.push(Number(strNumber));
           
           textbox.value = "";
           AddNumbers(strNumber)
           
+          // reset input number
           value1 = [];
-          plusCount = plusCount + 1;
+          plusCount++;
 
           break;
         case 66:
@@ -171,7 +150,8 @@
           break;
         case 22:
           // Result
-          textbox.value = Result[0]
+          textbox.value = Result;
+          console.log("= result:" + Result);
           // reset value & result
           value1 = [];
           Result = [];
@@ -180,20 +160,15 @@
           // AC
           // empty array, reset it to 0
           value1 = [];
-          Result = [];
-          // calFormular = [];
+          Result = 0;
           textbox.value = 0;
+          plusCount = 0;
+          minCount = 0;
+          divCount = 0;
+          mulCount = 0;
           break;
       }
     }
-
-    // number
-    // +
-    // return result[0] + number
-    // if result.length == 0, result[0] = 0,
-    //   return[0] + number
-    // else
-    // retunn return[0] + number
 
 
     function calculate(n_code) {
@@ -206,34 +181,6 @@
           break;
       }
     }
-
-    // function displayDate() {
-    //   document.getElementById("four").innerHTML = 7;
-    // }
-
-    // function displayValue(){
-    //   // working
-    //   textbox.value = 55555;
-
-
-    //   // document.getElementById("tb").value = 100;
-    //   // document.getElementById("one").innerHTML=100;
-    // }
-    // function displayAnswer(){
-      
-    //   document.getElementById("tb").value=100;
-    // }
-
-
-
-    
-  // var yutPannelDom = document.querySelector("#yut-sticks");
-  // function getScore() {
-  //   scores[activePlayer] += 1;
-  //   document.querySelector("#team-" + activePlayer + "-score").textContent =
-  //     scores[activePlayer];
-  // }
-
 
 
 let divBtn=document.getElementById("div");
