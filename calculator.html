@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="wclassth=device-wclassth, initial-scale=1.0">
+    <title>calculator</title>
+    <link rel="stylesheet" href="calculator.css">
+
+</head>
+<body>
+<section class="container">
+<input type="text" id="tb" class="text-input" placeholder="0">
+<button class="c1" id="AC" onclick="inputValue(33)">AC</button>
+<!-- <button class="c2" id="del" onclick="Redfunc()">DEL</button> -->
+<button class="c2" id="del" onclick="inputValue(11)">DEL</button>
+<button class="c2" id="div"  onclick="inputValue(88)">/</button>
+<button class="d1" id="seven" onclick="inputValue(7)">7</button>
+<button class="d1" id="eight" onclick="inputValue(8)">8</button>
+<button class="d1" id="nine" onclick="inputValue(9)">9</button>
+<button class="d1" id="mult" onclick="inputValue(77)">*</button>
+
+<button class="e1" id="four" onclick="inputValue(4)">4</button>
+<button class="e1" id="five" onclick="inputValue(5)">5</button>
+<button class="e1" id="six" onclick="inputValue(6)">6</button>
+<button class="e1" id="minus" onclick="inputValue(66)">-</button>
+<button class="f1" id="one" onclick="inputValue(1)">1</button>
+<button class="f1" id="two" onclick="inputValue(2)">2</button>
+<button class="f1" id="three" onclick="inputValue(3)">3</button>
+<button class="f1" id="plus" onclick="inputValue(55)">+</button>
+<button class="g1" id="zero" onclick="inputValue(0)">0</button>
+<button class="g1" id="dot" onclick="inputValue(99)">.</button>
+<button class="h2" id="equals" onclick="inputValue(22)">=</button>
+
+
+<script>
+    
+    var value1, value2;
+    
+    value1 = [];
+    value2 = [];
+    // function close_Turn(id) {
+    //   var document.querySelector("#player-0-unit > unit-" + id).style.display = "none";
+    // }
+    
+    // toString
+    // push
+    // join
+
+    function concatNumber(number){
+      // append number.toString to vale1 array
+      value1.push(number.toString())
+      // concat elements
+      let strNumber = value1.join("")
+
+      // console.log("value1 :" + value1);
+      console.log("strNumber:" + strNumber);
+      // console.log("Number:" + Number(toNumber));
+      return strNumber;
+      //return Number(toNumber)
+    }
+
+  // const fruits = ["Banana", "Orange", "Apple", "Mango", "Kiwi"];
+  // fruits.splice(2, 2);
+    function deleteNumber(){
+      let strNumber = value1.splice(-1, 1);
+      
+      
+      if ( value1.length == 0 ){
+        return 0;
+      } else {
+        return value1;
+      }
+      console.log("strNumber:" + strNumber);
+    }
+
+    function inputValue(number){
+      
+      let Number1, Number2;
+
+      switch (number) {
+        case 1:
+          // concatNumber(1)
+          textbox.value = concatNumber(1);
+          break;
+        case 2:
+          textbox.value = concatNumber(2);
+          break;
+        case 3:
+          textbox.value = concatNumber(3);
+          break;
+        case 4:
+          textbox.value = concatNumber(4);
+          break;
+        case 5:
+          textbox.value = concatNumber(5);
+          break;
+        case 6:
+          textbox.value = concatNumber(6);
+          break;
+        case 7:
+          textbox.value = concatNumber(7);
+          break;
+        case 8:
+          textbox.value = concatNumber(8);
+          break;
+        case 9:
+          textbox.value = concatNumber(9);
+          break;
+        case 0:
+          textbox.value = concatNumber(0);
+          break;
+        case 55:
+          // Plus
+          textbox.value = 55;
+          break;
+        case 66:
+          // Minus
+          textbox.value = 66;
+          break;
+        case 77:
+          // Multiply
+          textbox.value = 77;
+          break;
+        case 88:
+          // Divide
+          textbox.value = 88;
+          break;
+        case 99:
+          // dot
+          textbox.value = 99;
+          break;
+        case 11:
+          // delete
+          textbox.value = deleteNumber();
+          break;
+        case 22:
+          // Result
+          textbox.value = 22;
+          break;
+        case 33:
+          // Result
+          // empty value1, value2
+          textbox.value = 0;
+          break;
+      }
+    }
+
+
+    function displayDate() {
+      document.getElementById("four").innerHTML = 7;
+    }
+
+    function displayValue(){
+      // working
+      textbox.value = 55555;
+
+
+      // document.getElementById("tb").value = 100;
+      // document.getElementById("one").innerHTML=100;
+    }
+    function displayAnswer(){
+      
+      document.getElementById("tb").value=100;
+    }
+
+    function AddNumbers(){
+        //mybuttons=document.querySelectorAll('buttons');
+        if(document.getElementById("seven").clicked == true)
+        {
+          alert("button 7 was clicked");
+        }
+        
+       // mybuttons[0].addEventListener('click',Redfunc);
+    }
+
+    
+  // var yutPannelDom = document.querySelector("#yut-sticks");
+  // function getScore() {
+  //   scores[activePlayer] += 1;
+  //   document.querySelector("#team-" + activePlayer + "-score").textContent =
+  //     scores[activePlayer];
+  // }
+
+
+
+let divBtn=document.getElementById("div");
+let multBtn=document.getElementById("mult");
+let addBtn=document.getElementById("add");
+let subBtn=document.getElementById("minus");
+let dotBtn=document.getElementById("dot");
+let eqBtn=document.getElementById("equals");
+
+let n1=document.getElementById("one");
+let n2=document.getElementById("two");
+let n3=document.getElementById("three");
+let n4=document.getElementById("four");
+let n5=document.getElementById("five");
+let n6=document.getElementById("six");
+let n7=document.getElementById("seven");
+let n8=document.getElementById("eight");
+let n9=document.getElementById("nine");
+let n0=document.getElementById("zero");
+let textbox=document.getElementById("tb");
+
+
+
+
+</script>
+<script src="calculator.js"></script>
+</section>
+</body>
+</html>
