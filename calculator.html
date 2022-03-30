@@ -12,7 +12,6 @@
 <section class="container">
 <input type="text" id="tb" class="text-input" placeholder="0">
 <button class="c1" id="AC" onclick="inputValue(33)">AC</button>
-<!-- <button class="c2" id="del" onclick="Redfunc()">DEL</button> -->
 <button class="c2" id="del" onclick="inputValue(11)">DEL</button>
 <button class="c2" id="div"  onclick="inputValue(88)">/</button>
 <button class="d1" id="seven" onclick="inputValue(7)">7</button>
@@ -50,28 +49,24 @@
     function concatNumber(number){
       // append number.toString to vale1 array
       value1.push(number.toString())
-      // concat elements
+      // concat input numbers
       let strNumber = value1.join("")
 
-      // console.log("value1 :" + value1);
       console.log("strNumber:" + strNumber);
-      // console.log("Number:" + Number(toNumber));
       return strNumber;
-      //return Number(toNumber)
     }
 
-  // const fruits = ["Banana", "Orange", "Apple", "Mango", "Kiwi"];
-  // fruits.splice(2, 2);
     function deleteNumber(){
-      let strNumber = value1.splice(-1, 1);
+      // remove end of element in value1 array
+      value1.splice(-1, 1);
+      // concat input numbers
+      let strNumber = value1.join("")
       
-      
-      if ( value1.length == 0 ){
+      if ( strNumber.length == 0 ){
         return 0;
       } else {
-        return value1;
+        return strNumber;
       }
-      console.log("strNumber:" + strNumber);
     }
 
     function inputValue(number){
@@ -80,7 +75,6 @@
 
       switch (number) {
         case 1:
-          // concatNumber(1)
           textbox.value = concatNumber(1);
           break;
         case 2:
@@ -139,8 +133,9 @@
           textbox.value = 22;
           break;
         case 33:
-          // Result
-          // empty value1, value2
+          // AC
+          // empty array, reset it to 0
+          value1 = []
           textbox.value = 0;
           break;
       }

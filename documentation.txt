@@ -1,0 +1,11 @@
+
+
+
+In order select individual button, we used the switch function with corresponding values. 
+
+
+
+
+    // toString
+    // push
+    // join
