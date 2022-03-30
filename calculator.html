@@ -34,17 +34,12 @@
 
 <script>
     
-    var value1, value2;
+    var value1, value2, calFormular, Result;
     
     value1 = [];
     value2 = [];
-    // function close_Turn(id) {
-    //   var document.querySelector("#player-0-unit > unit-" + id).style.display = "none";
-    // }
-    
-    // toString
-    // push
-    // join
+    calFormular = [];
+    Result = [];
 
     function concatNumber(number){
       // append number.toString to vale1 array
@@ -68,6 +63,17 @@
         return strNumber;
       }
     }
+
+    function AddNumbers(num1, num2){
+      
+      let strNumber1 = num1.join("")
+      let strNumber2 = num2.join("")
+      let numValue1 = Number(strNumber1)
+      let numValue2 = Number(strNumber1)
+
+      return numValue1 + numValue2
+    }
+
 
     function inputValue(number){
       
@@ -106,7 +112,18 @@
           break;
         case 55:
           // Plus
-          textbox.value = 55;
+          // append calculate formular code
+          // append result
+          let strNumber = value1.join("");
+          Result.push(Number(strNumber));
+          value1 = []
+
+          
+
+          console.log("Result:", Result[0]);
+
+          //calFormular.push(55);
+          textbox.value = "";
           break;
         case 66:
           // Minus
@@ -130,44 +147,48 @@
           break;
         case 22:
           // Result
-          textbox.value = 22;
+          
+          calculate();
+
           break;
         case 33:
           // AC
           // empty array, reset it to 0
           value1 = []
+          calFormular = []
           textbox.value = 0;
           break;
       }
     }
 
-
-    function displayDate() {
-      document.getElementById("four").innerHTML = 7;
-    }
-
-    function displayValue(){
-      // working
-      textbox.value = 55555;
-
-
-      // document.getElementById("tb").value = 100;
-      // document.getElementById("one").innerHTML=100;
-    }
-    function displayAnswer(){
+    function calculate(n_code) {
       
-      document.getElementById("tb").value=100;
+
+      switch (n_code) {
+        case 55:
+
+          textbox.value = AddNumbers(value1, value2);
+          break;
     }
 
-    function AddNumbers(){
-        //mybuttons=document.querySelectorAll('buttons');
-        if(document.getElementById("seven").clicked == true)
-        {
-          alert("button 7 was clicked");
-        }
-        
-       // mybuttons[0].addEventListener('click',Redfunc);
-    }
+    // function displayDate() {
+    //   document.getElementById("four").innerHTML = 7;
+    // }
+
+    // function displayValue(){
+    //   // working
+    //   textbox.value = 55555;
+
+
+    //   // document.getElementById("tb").value = 100;
+    //   // document.getElementById("one").innerHTML=100;
+    // }
+    // function displayAnswer(){
+      
+    //   document.getElementById("tb").value=100;
+    // }
+
+
 
     
   // var yutPannelDom = document.querySelector("#yut-sticks");
@@ -185,7 +206,6 @@ let addBtn=document.getElementById("add");
 let subBtn=document.getElementById("minus");
 let dotBtn=document.getElementById("dot");
 let eqBtn=document.getElementById("equals");
-
 let n1=document.getElementById("one");
 let n2=document.getElementById("two");
 let n3=document.getElementById("three");
