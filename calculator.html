@@ -43,9 +43,9 @@
 
     function concatNumber(number){
       // append number.toString to vale1 array
-      value1.push(number.toString())
+      value1.push(number.toString());
       // concat input numbers
-      let strNumber = value1.join("")
+      let strNumber = value1.join("");
 
       console.log("strNumber:" + strNumber);
       return strNumber;
@@ -55,7 +55,7 @@
       // remove end of element in value1 array
       value1.splice(-1, 1);
       // concat input numbers
-      let strNumber = value1.join("")
+      let strNumber = value1.join("");
       
       if ( strNumber.length == 0 ){
         return 0;
@@ -66,12 +66,12 @@
 
     function AddNumbers(num1, num2){
       
-      let strNumber1 = num1.join("")
-      let strNumber2 = num2.join("")
-      let numValue1 = Number(strNumber1)
-      let numValue2 = Number(strNumber1)
+      let strNumber1 = num1.join("");
+      let strNumber2 = num2.join("");
+      let numValue1 = Number(strNumber1);
+      let numValue2 = Number(strNumber1);
 
-      return numValue1 + numValue2
+      return numValue1 + numValue2;
     }
 
 
@@ -116,14 +116,12 @@
           // append result
           let strNumber = value1.join("");
           Result.push(Number(strNumber));
-          value1 = []
-
+          value1 = [];
           
-
+          textbox.value = "";
+          
           console.log("Result:", Result[0]);
 
-          //calFormular.push(55);
-          textbox.value = "";
           break;
         case 66:
           // Minus
@@ -154,8 +152,8 @@
         case 33:
           // AC
           // empty array, reset it to 0
-          value1 = []
-          calFormular = []
+          value1 = [];
+          calFormular = [];
           textbox.value = 0;
           break;
       }
@@ -167,8 +165,9 @@
       switch (n_code) {
         case 55:
 
-          textbox.value = AddNumbers(value1, value2);
+          textbox.value = AddNumbers(Result, value1);
           break;
+      }
     }
 
     // function displayDate() {
@@ -222,7 +221,7 @@ let textbox=document.getElementById("tb");
 
 
 </script>
-<script src="calculator.js"></script>
+<!-- <script src="calculator.js"></script> -->
 </section>
 </body>
 </html>
