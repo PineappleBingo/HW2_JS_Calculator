@@ -33,12 +33,13 @@
 
 <script>
     
-    var value1, value2, Result, rcode;
+    var value1, value2, Result, rcode, isDisplayed;
     
     // In order to work with multi-digits number, value1 set to array.
     value1 = [];
     Result = 0;
     rcode = 0;
+    isDisplayed = false;
 
     function displayValue(number){
       // append number.toString to vale1 array
@@ -79,21 +80,56 @@
       rcode = 2;
     }
 
-    function MulNumbers(number1, number2) {
+    function MultNumbers(number1, number2) {
       // Result = Result * inputValue
       let tempResult = Number(number1);
+      let tempResult2 = Number(number2);
+      console.log("mult tempResult1:" + tempResult);
+      console.log("mult tempResult2:" + tempResult2); // 0
+
       if( tempResult == 0){
-        console.log("tempResult:" + tempResult);
+        // console.log("tempResult:" + tempResult);
         tempResult = 1;
         Result = tempResult * Number(number2);
-        console.log("Result1:" + Result);        
+        // console.log("Result1:" + Result);        
       } else {
-        Result = Number(number1) * Number(number2);
-        console.log("Result2:" + Result);
-      } 
+          console.log("else st begins");
+          if (tempResult2.length == 0) {
+          console.log("else if st begins");
+          tempResult2 = 1;
+          // Result = tempResult * tempResult2; // 5  *  6
+          // Result = Result * (tempResult * tempResult2);
+          Result = tempResult * tempResult2;
+
+          console.log("mul else if Result:" + Result);
+          }
+      }
+      
+      //           if (tempResult2.length == 0) {
+      //   tempResult2 = 1;
+      //   Result = Number(number1) * tempResult2; // 5  *  6
+      //   console.log("mul elif Result:" + Result);
+      // }
+
+        // // clicked on displayResult()
+        // if ( isDisplayed ){
+        //   tempResult2 = 1;
+        //   console.log("mult else number2:" + Number(number2)); // 0
+        //   console.log("mult else tempResult2:" + tempResult2); // 0
+        //   Result = tempResult * tempResult2;
+        //   console.log("mult else Result2:" + Result); // 0
+        // } else{
+        //   Result = tempResult * Number(number2);
+        //   console.log("mult else else Result:" + Result);
+        // }
+
+ 
       textbox.value = Result;
-      // console.log("Result:" + Result);
       rcode = 3;
+      console.log("outside else mult Result:" + Result);
+      isDisplayed = false; // remove
+      // // reset 
+      // value1 = []
     }
 
     function DivNumbers(number1, number2) {
@@ -112,8 +148,7 @@
 
     function inputValue(bcode){
       // concat input numbers to string 
-      let strNumber = value1.join("");
-
+      
       switch (bcode) {
         case 1:
           textbox.value = displayValue(1);
@@ -147,30 +182,36 @@
           break;
         case 55:
           // Plus
+          let strNumber1 = value1.join("");
+          console.log("add strNumber1:" + strNumber1);
           textbox.value = "";
-          AddNumbers(Result, strNumber);
+          AddNumbers(Result, strNumber1);
           // reset input array
           value1 = [];
           break;
         case 66:
           // Minus
+          let strNumber2 = value1.join("");
           textbox.value = "";
-          SubNumbers(Result, strNumber);
+          SubNumbers(Result, strNumber2);
           // reset input array
           value1 = [];
           break;
         case 77:
           // Multiply
+          let strNumber3 = value1.join("");
+          console.log("strNumber3:" + strNumber3);
           textbox.value = "";
-          MulNumbers(Result, strNumber);
+          MultNumbers(Result, strNumber3);
           // reset input number
           value1 = [];
           break;
         case 88:
           // Divide
+          let strNumber4 = value1.join("");
           textbox.value = "";
           // Result = Number(strNumber);
-          DivNumbers(Result, strNumber);
+          DivNumbers(Result, strNumber4);
           // reset input number
           value1 = [];
           break;
@@ -184,7 +225,10 @@
           break;
         case 22:
           // Display Result
+          console.log("before Result from = :" + Result);
           displayResult(rcode)
+          console.log("after Result from = :" + Result);
+          
           // reset input number
           value1 = [];
           break;
@@ -203,16 +247,27 @@ function displayResult(rcode){
   let strNumber = value1.join("");
   switch (rcode) {
     case 1:
-      AddNumbers(Result, strNumber);
+      let strNumber1 = value1.join("");
+      console.log("D before strNumber1 :" + strNumber1);
+      AddNumbers(Result, strNumber1);
+      console.log("D after strNumber1 :" + strNumber1);
+      //isDisplayed = true; // remove
       break;
     case 2:
-      SubNumbers(Result, strNumber);
+      let strNumber2 = value1.join("");
+      SubNumbers(Result, strNumber2);
       break;
     case 3:
-      MulNumbers(Result, strNumber);
+      let strNumber3 = value1.join("");
+      console.log("D strNumber3 :" + strNumber3);
+      // console.log("bResult from dr:" + Result);
+      MultNumbers(Result, strNumber3);
+      // console.log("aResult from dr:" + Result);
       break;
+      
     case 4:
-      DivNumbers(Result, strNumber);
+      let strNumber4 = value1.join("");
+      DivNumbers(Result, strNumber4);
       break;
   }
 }
