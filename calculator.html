@@ -43,10 +43,10 @@
     function displayValue(number){
       // append number.toString to vale1 array
       value1.push(number.toString());
-      // concat input numbers
+      // concat input numbers to string 
       let strNumber = value1.join("");
 
-      // console.log("strNumber:" + strNumber);
+      console.log("strNumber:" + strNumber);
       return strNumber;
     }
 
@@ -64,16 +64,55 @@
     }
 
     function AddNumbers(number1, number2){
-      
+      // Result = Result + inputValue
       Result = Number(number1) + Number(number2);
       textbox.value = Result;
-
       // console.log("Result:" + Result);
       rcode = 1;
-   
+    }
+
+    function SubNumbers(number1, number2) {
+      // Result = -(Result) + inputValue
+      Result = -1 * Number(number1) + Number(number2);
+      textbox.value = Result;
+      // console.log("Result:" + Result);
+      rcode = 2;
+    }
+
+    function MulNumbers(number1, number2) {
+      // Result = Result * inputValue
+      let tempResult = Number(number1);
+      if( tempResult == 0){
+        console.log("tempResult:" + tempResult);
+        tempResult = 1;
+        Result = tempResult * Number(number2);
+        console.log("Result1:" + Result);        
+      } else {
+        Result = Number(number1) * Number(number2);
+        console.log("Result2:" + Result);
+      } 
+      textbox.value = Result;
+      // console.log("Result:" + Result);
+      rcode = 3;
+    }
+
+    function DivNumbers(number1, number2) {
+      // Result = Result / inputValue
+      if (Number(number2) == 0){
+        textbox.value = "Can't divide by zero";
+      } else {
+        let inputNum1 = Number(number1);
+
+        Result = Number(number1) / Number(number2);
+        textbox.value = Result;
+      }
+      // console.log("Result:" + Result);
+      rcode = 4;
     }
 
     function inputValue(bcode){
+      // concat input numbers to string 
+      let strNumber = value1.join("");
 
       switch (bcode) {
         case 1:
@@ -108,26 +147,32 @@
           break;
         case 55:
           // Plus
-          let strNumber1 = value1.join("");
-                  
-          // console.log("input:" + strNumber1);
           textbox.value = "";
-          AddNumbers(Result, strNumber1);
-
-          // reset input number
+          AddNumbers(Result, strNumber);
+          // reset input array
           value1 = [];
           break;
         case 66:
           // Minus
-          textbox.value = 66;
+          textbox.value = "";
+          SubNumbers(Result, strNumber);
+          // reset input array
+          value1 = [];
           break;
         case 77:
           // Multiply
-          textbox.value = 77;
+          textbox.value = "";
+          MulNumbers(Result, strNumber);
+          // reset input number
+          value1 = [];
           break;
         case 88:
           // Divide
-          textbox.value = 88;
+          textbox.value = "";
+          // Result = Number(strNumber);
+          DivNumbers(Result, strNumber);
+          // reset input number
+          value1 = [];
           break;
         case 99:
           // dot
@@ -138,9 +183,9 @@
           textbox.value = deleteNumber();
           break;
         case 22:
-          // Result
+          // Display Result
           displayResult(rcode)
-
+          // reset input number
           value1 = [];
           break;
         case 33:
@@ -154,16 +199,23 @@
     }
 
 function displayResult(rcode){
+  // concat input numbers to string   
+  let strNumber = value1.join("");
   switch (rcode) {
     case 1:
-
-      let strNumber1 = value1.join("");
-      AddNumbers(Result, strNumber1);
+      AddNumbers(Result, strNumber);
+      break;
+    case 2:
+      SubNumbers(Result, strNumber);
+      break;
+    case 3:
+      MulNumbers(Result, strNumber);
+      break;
+    case 4:
+      DivNumbers(Result, strNumber);
       break;
   }
 }
-
-
 
 let divBtn=document.getElementById("div");
 let multBtn=document.getElementById("mult");
