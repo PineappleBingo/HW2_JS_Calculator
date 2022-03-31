@@ -33,16 +33,17 @@
 
 <script>
     
-    var value1, Result;
+    var value1, value2, Result, ResultA, ResultB, counter, rcode;
     
-    let plusCount = 0;
-    let minCount = 0;
-    let divCount = 0;
-    let mulCount = 0;
-
     // In order to work with multi-digits number, value1 set to array.
     value1 = [];
     Result = 0;
+    rcode = 0;
+    ///////////// using double variable ///////////////
+    // value2 = [];
+    // ResultA = 0;
+    // ResultB = 0;
+    // counter = 0;
 
     function displayValue(number){
       // append number.toString to vale1 array
@@ -52,6 +53,23 @@
 
       console.log("strNumber:" + strNumber);
       return strNumber;
+    
+      ///////////// using double variable ///////////////
+      // if(counter % 2 == 0){
+      //   // append number.toString to vale1 array
+      //   value1.push(number.toString());
+      //   // concat input numbers
+      //   let strNumber1 = value1.join("");
+      //   console.log("strNumber1:" + strNumber1);
+      //   return strNumber1;
+      // } else {
+      //   // append number.toString to vale1 array
+      //   value2.push(number.toString());
+      //   // concat input numbers
+      //   let strNumber2 = value2.join("");
+      //   console.log("strNumber2:" + strNumber2);
+      //   return strNumber2;
+      // }
     }
 
     function deleteNumber(){
@@ -67,23 +85,36 @@
       }
     }
 
-    function AddNumbers(number){
-      let sum = 0;
-      if (plusCount == 0){
-        sum = 0 + Number(number);
-        Result = sum;
-      } else {
-        sum = Result + Number(number);
-        Result = sum;
-      }
+    function AddNumbers(number1, number2){
+      
+      Result = Number(number1) + Number(number2);
       textbox.value = Result;
+
+      console.log("Result:" + Result);
+      rcode = 1;
+   
+      ///////////// using double variable ///////////////
+      // let sum = 0;
+      // if (counter % 2 == 0) {
+      //   sum = ResultA + Number(number1);
+      //   ResultA = sum;
+      //   console.log("Result Even:" + ResultA);
+      // } else { 
+      //   sum = ResultB + Number(number2);
+      //   ResultB = sum;
+      //   console.log("Result Odd:" + ResultB);
+      // }
+      // Result = ResultA + ResultB;
+      // textbox.value = Result;
+      // rcode = 1;
+      
     }
 
-    function inputValue(number){
+    function inputValue(bcode){
       
       let Number1, Number2;
 
-      switch (number) {
+      switch (bcode) {
         case 1:
           textbox.value = displayValue(1);
           break;
@@ -116,14 +147,26 @@
           break;
         case 55:
           // Plus
-          let strNumber = value1.join("");
-          
+          let strNumber1 = value1.join("");
+                  
+          console.log("input:" + strNumber1);
           textbox.value = "";
-          AddNumbers(strNumber)
-          
+          AddNumbers(Result, strNumber1);
+
+          ///////////// using double variable ///////////////
+          // let strNumber1 = value1.join("");
+          // let strNumber2 = value2.join("");
+
+          // console.log("num1:" + strNumber1);
+          // console.log("num2:" + strNumber2);
+
+          // textbox.value = "";
+          // AddNumbers(strNumber1, strNumber2);
+          // counter++;
+
           // reset input number
           value1 = [];
-          plusCount++;
+          // value2 = [];
           break;
         case 66:
           // Minus
@@ -147,15 +190,14 @@
           break;
         case 22:
           // Result
-          textbox.value = Result;
+          displayResult(rcode)
+
+          // textbox.value = Result;
           // reset input value / result / variables
           value1 = [];
-          Result = [];
-          textbox.value = 0;
-          plusCount = 0;
-          minCount = 0;
-          divCount = 0;
-          mulCount = 0;
+
+          // value2 = [];
+          // conter = 0;
           break;
         case 33:
           // AC
@@ -163,13 +205,24 @@
           value1 = [];
           Result = 0;
           textbox.value = 0;
-          plusCount = 0;
-          minCount = 0;
-          divCount = 0;
-          mulCount = 0;
+          // counter = 0;
+          // value2 = [];
+          // ResultA = 0;
+          // ResultB = 0;
           break;
       }
     }
+
+function displayResult(rcode){
+  switch (rcode) {
+    case 1:
+
+      let strNumber1 = value1.join("");
+      AddNumbers(Result, strNumber1);
+      break;
+  }
+}
+
 
 
 let divBtn=document.getElementById("div");
