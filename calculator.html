@@ -82,35 +82,44 @@
 
     function MultNumbers(number1, number2) {
       // Result = Result * inputValue
-      let tempResult = Number(number1);
-      let tempResult2 = Number(number2);
-      console.log("mult tempResult1:" + tempResult);
-      console.log("mult tempResult2:" + tempResult2); // 0
+      let tempResult1 = Number(number1); // result
+      let tempResult2 = Number(number2); // input number2 
+      console.log("mult tempResult1:" + tempResult1);
+      console.log("mult tempResult2:" + tempResult2); // 1 until it gets value by defualt 
+      
+      // Case when result = 0
+      if( tempResult1 == 0){
+        // return 0        
+        // Result = Number(number1) * Number(number2);
+        // Result = tempResult1 * Number(number2);
+        Return = 0;
+        console.log("tempResult1:" + tempResult1);
 
-      if( tempResult == 0){
-        // console.log("tempResult:" + tempResult);
-        tempResult = 1;
-        Result = tempResult * Number(number2);
-        // console.log("Result1:" + Result);        
+        // tempResult = 1;
+        // Result = tempResult1 * Number(number2);
+      
+      // Case when result != 0
       } else {
-          console.log("else st begins");
-          if (tempResult2.length == 0) {
-          console.log("else if st begins");
-          tempResult2 = 1;
-          // Result = tempResult * tempResult2; // 5  *  6
-          // Result = Result * (tempResult * tempResult2);
-          Result = tempResult * tempResult2;
+          console.log("when tempResult1(Result) != 0");
+          
+          // Case when first value(Result) in
+          if (number2.length == 0) {
+            console.log("We havne't received tempResult2 yet");
+            // tempResult2 set to 1 before it gets its own value
+            tempResult2 = 1;
+            // Result = Result * 1;
+            // Result = Number(number1) * 1;
+            Result = tempResult1 * tempResult2;
 
-          console.log("mul else if Result:" + Result);
+          // Case when second value in
+          } else {
+            tempResult2 = Number(number2);
+            console.log("We have received tempResult2: " + tempResult2);
+            Result = tempResult1 * tempResult2;
+            Result = tempResult1 * Number(number2);
           }
       }
       
-      //           if (tempResult2.length == 0) {
-      //   tempResult2 = 1;
-      //   Result = Number(number1) * tempResult2; // 5  *  6
-      //   console.log("mul elif Result:" + Result);
-      // }
-
         // // clicked on displayResult()
         // if ( isDisplayed ){
         //   tempResult2 = 1;
@@ -126,10 +135,9 @@
  
       textbox.value = Result;
       rcode = 3;
-      console.log("outside else mult Result:" + Result);
-      isDisplayed = false; // remove
-      // // reset 
-      // value1 = []
+      console.log("final Result:" + Result);
+      // isDisplayed = false; // remove
+      
     }
 
     function DivNumbers(number1, number2) {
@@ -248,9 +256,7 @@ function displayResult(rcode){
   switch (rcode) {
     case 1:
       let strNumber1 = value1.join("");
-      console.log("D before strNumber1 :" + strNumber1);
       AddNumbers(Result, strNumber1);
-      console.log("D after strNumber1 :" + strNumber1);
       //isDisplayed = true; // remove
       break;
     case 2:
