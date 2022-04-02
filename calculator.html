@@ -33,13 +33,17 @@
 
 <script>
     
-    var value1, value2, Result, rcode, isDisplayed;
+    var value1, value2, Result, ResultA, ResultB, counter, rcode;
     
     // In order to work with multi-digits number, value1 set to array.
     value1 = [];
     Result = 0;
     rcode = 0;
-    isDisplayed = false;
+     ///////////// using double variable ///////////////
+    // value2 = [];
+    // ResultA = 0;
+    // ResultB = 0;
+    // counter = 0;
 
     function displayValue(number){
       // append number.toString to vale1 array
@@ -49,6 +53,23 @@
 
       console.log("strNumber:" + strNumber);
       return strNumber;
+
+            ///////////// using double variable ///////////////
+      // if(counter % 2 == 0){
+      //   // append number.toString to vale1 array
+      //   value1.push(number.toString());
+      //   // concat input numbers
+      //   let strNumber1 = value1.join("");
+      //   console.log("strNumber1:" + strNumber1);
+      //   return strNumber1;
+      // } else {
+      //   // append number.toString to vale1 array
+      //   value2.push(number.toString());
+      //   // concat input numbers
+      //   let strNumber2 = value2.join("");
+      //   console.log("strNumber2:" + strNumber2);
+      //   return strNumber2;
+      // }
     }
 
     function deleteNumber(){
@@ -70,6 +91,22 @@
       textbox.value = Result;
       // console.log("Result:" + Result);
       rcode = 1;
+
+      ///////////// using double variable ///////////////
+      // let sum = 0;
+      // if (counter % 2 == 0) {
+      //   sum = ResultA + Number(number1);
+      //   ResultA = sum;
+      //   console.log("Result Even:" + ResultA);
+      // } else { 
+      //   sum = ResultB + Number(number2);
+      //   ResultB = sum;
+      //   console.log("Result Odd:" + ResultB);
+      // }
+      // Result = ResultA + ResultB;
+      // textbox.value = Result;
+      // rcode = 1;
+
     }
 
     function SubNumbers(number1, number2) {
@@ -189,8 +226,21 @@
           // Plus
           textbox.value = "";
           AddNumbers(Result, strNumber);
+          ///////////// using double variable ///////////////
+          // let strNumber1 = value1.join("");
+          // let strNumber2 = value2.join("");
+
+          // console.log("num1:" + strNumber1);
+          // console.log("num2:" + strNumber2);
+
+          // textbox.value = "";
+          // AddNumbers(strNumber1, strNumber2);
+          // counter++;
+
           // reset input array
           value1 = [];
+          // value2 = [];
+
           break;
         case 66:
           // Minus
@@ -226,6 +276,9 @@
           displayResult(rcode)
           // reset input number
           value1 = [];
+
+          // value2 = [];
+          // conter = 0;          
           break;
         case 33:
           // AC
