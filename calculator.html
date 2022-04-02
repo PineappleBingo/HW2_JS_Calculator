@@ -74,7 +74,7 @@
 
     function SubNumbers(number1, number2) {
       // Result = -(Result) + inputValue
-      Result = -1 * Number(number1) + Number(number2);
+      Result = Number(number1) - Number(number2);
       textbox.value = Result;
       // console.log("Result:" + Result);
       rcode = 2;
@@ -84,15 +84,13 @@
       // Result = Result * inputValue
       let tempResult1 = Number(number1); // result
       let tempResult2 = Number(number2); // input number2 
-      console.log("mult tempResult1:" + tempResult1);
-      console.log("mult tempResult2:" + tempResult2); // 1 until it gets value by defualt 
-      
+     
       // Case when result = 0
       if( tempResult1 == 0){
         // return 0        
         // Result = Number(number1) * Number(number2);
-        // Result = tempResult1 * Number(number2);
-        Return = 0;
+        Result = tempResult1 * Number(number2);
+        // Return = 0;
         console.log("tempResult1:" + tempResult1);
   
       // Case when result != 0
@@ -104,8 +102,6 @@
             console.log("We havne't received tempResult2 yet");
             // tempResult2 set to 1 before it gets its own value
             tempResult2 = 1;
-            // Result = Result * 1;
-            // Result = Number(number1) * 1;
             Result = tempResult1 * tempResult2;
 
           // Case when second value in
@@ -113,15 +109,12 @@
             tempResult2 = Number(number2);
             console.log("We have received tempResult2: " + tempResult2);
             Result = tempResult1 * tempResult2;
-            Result = tempResult1 * Number(number2);
           }
       }
       
       textbox.value = Result;
       rcode = 3;
       console.log("final Result:" + Result);
-      // isDisplayed = false; // remove
-      
     }
 
     function DivNumbers(number1, number2) {
@@ -140,7 +133,8 @@
 
     function inputValue(bcode){
       // concat input numbers to string 
-      
+      let strNumber = value1.join("");
+
       switch (bcode) {
         case 1:
           textbox.value = displayValue(1);
@@ -174,36 +168,29 @@
           break;
         case 55:
           // Plus
-          let strNumber1 = value1.join("");
-          console.log("add strNumber1:" + strNumber1);
           textbox.value = "";
-          AddNumbers(Result, strNumber1);
+          AddNumbers(Result, strNumber);
           // reset input array
           value1 = [];
           break;
         case 66:
           // Minus
-          let strNumber2 = value1.join("");
           textbox.value = "";
-          SubNumbers(Result, strNumber2);
+          SubNumbers(Result, strNumber);
           // reset input array
           value1 = [];
           break;
         case 77:
           // Multiply
-          let strNumber3 = value1.join("");
-          console.log("strNumber3:" + strNumber3);
           textbox.value = "";
-          MultNumbers(Result, strNumber3);
+          MultNumbers(Result, strNumber);
           // reset input number
           value1 = [];
           break;
         case 88:
           // Divide
-          let strNumber4 = value1.join("");
           textbox.value = "";
-          // Result = Number(strNumber);
-          DivNumbers(Result, strNumber4);
+          DivNumbers(Result, strNumber);
           // reset input number
           value1 = [];
           break;
@@ -217,10 +204,7 @@
           break;
         case 22:
           // Display Result
-          console.log("before Result from = :" + Result);
           displayResult(rcode)
-          console.log("after Result from = :" + Result);
-          
           // reset input number
           value1 = [];
           break;
@@ -241,7 +225,6 @@ function displayResult(rcode){
     case 1:
       let strNumber1 = value1.join("");
       AddNumbers(Result, strNumber1);
-      //isDisplayed = true; // remove
       break;
     case 2:
       let strNumber2 = value1.join("");
@@ -249,12 +232,8 @@ function displayResult(rcode){
       break;
     case 3:
       let strNumber3 = value1.join("");
-      console.log("D strNumber3 :" + strNumber3);
-      // console.log("bResult from dr:" + Result);
       MultNumbers(Result, strNumber3);
-      // console.log("aResult from dr:" + Result);
       break;
-      
     case 4:
       let strNumber4 = value1.join("");
       DivNumbers(Result, strNumber4);
