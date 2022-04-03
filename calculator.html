@@ -48,24 +48,6 @@
     
     function displayValue(number){
 
-      // // Case when firt input in 
-      // if(counter % 2 == 0){
-      //   // append number.toString to vale1 array
-      //   value1.push(number.toString());
-      //   // concat input numbers to string
-      //   let strNumber1 = value1.join("");
-      //   console.log("strNumber1:" + strNumber1);
-      //   return strNumber1;
-      // // Case when Second input in
-      // } else {
-      //   // append number.toString to vale2 array
-      //   value2.push(number.toString());
-      //   // concat input numbers to string
-      //   let strNumber2 = value2.join("");
-      //   console.log("strNumber2:" + strNumber2);
-      //   return strNumber2;
-      // }
-
       // Case when firt input in 
       if (counter % 2 == 0) {
         // append number.toString to vale1 array
@@ -91,21 +73,29 @@
 
         return strNumber2;
       }
-
-
     }
 
     function deleteNumber(){
-      // Remove 1-digit at time
-      value1.splice(-1, 1);
-      // Concat input number digits
-      let strNumber = value1.join("");
-      
-      if ( strNumber.length == 0 ){
-        return 0;
+      // Case when the first input value
+      if (counter % 2 == 0) {
+        value1.splice(-1, 1);
+        let strNumber1 = value1.join("");
+        if (strNumber1.length == 0 ) {
+          return 0;
+        } else {
+          return strNumber1;
+        }
+        // Case when the second input value
       } else {
-        return strNumber;
+        value2.splice(-1, 1);
+        let strNumber2 = value2.join("");
+        if (strNumber2.length == 0) {
+          return 0;
+        } else {
+          return strNumber2;
+        }
       }
+
     }
 
     function AddNumbers(number1, number2){
@@ -117,7 +107,7 @@
       // rcode = 1;
 
       
-      /////////// using double variable ///////////////
+      /////////// using double variable /////////////// working code
       let sum = 0;
       if (counter % 2 == 0) {
         sum = ResultA + Number(number1);
@@ -275,16 +265,20 @@
           
           console.log("num1:" + strNumber1);
           console.log("num2:" + strNumber2);
+
+          // working codoe
+          AddNumbers(strNumber1, strNumber2);
+          console.log("Conter: " + counter);
+          // reset input array
+          value2 = [];
+          value1 = [];
+          
+          
           // single variable
           // AddNumbers(ResultA, ResultB);
           // double variables
-          AddNumbers(strNumber1, strNumber2);
-          console.log("Conter: " + counter);
           // or ResultA = Result
 
-          // reset input array
-          value1 = [];
-          value2 = [];
 
           // Single Variable
           // ResultA = 0;
