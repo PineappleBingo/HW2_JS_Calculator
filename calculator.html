@@ -72,7 +72,9 @@
         value1.push(number.toString());
         // concat input numbers to string
         let strNumber1 = value1.join("");
-        ResultA = Number(strNumber1);
+
+        // single variable
+        // ResultA = Number(strNumber1);
         console.log("strNumber1:" + strNumber1 + " ResultA: " + ResultA);
 
         return strNumber1;
@@ -82,7 +84,9 @@
         value2.push(number.toString());
         // concat input numbers to string
         let strNumber2 = value2.join("");
-        ResultB = Number(strNumber2);
+        
+        // single variable
+        // ResultB = Number(strNumber2);
         console.log("strNumber2:" + strNumber2 + " ResultB: " + ResultB);
 
         return strNumber2;
@@ -114,36 +118,40 @@
 
       
       /////////// using double variable ///////////////
-      // let sum = 0;
-      // if (counter % 2 == 0) {
-      //   sum = ResultA + Number(number1);
-      //   ResultA = sum;
-      //   console.log("Result Even:" + ResultA);
-      // } else { 
-      //   sum = ResultB + Number(number2);
-      //   ResultB = sum;
-      //   console.log("Result Odd:" + ResultB);
-      // }
+      let sum = 0;
+      if (counter % 2 == 0) {
+        sum = ResultA + Number(number1);
+        ResultA = sum;
+        console.log("Result Even:" + ResultA);
+      } else { 
+        sum = ResultB + Number(number2);
+        ResultB = sum;
+        console.log("Result Odd:" + ResultB);
+      }
 
-      // Result = ResultA + ResultB;
-      // console.log("ResultA: " + ResultA + " + ResultB: " + ResultB + " = " + Result);
-      // textbox.value = Result;
-      // rcode = 1;
-
-
-      // Result = Number(num1) + Number(num2);
-      console.log("Before ADD Result " + Result);
-      Result = Number(number1) + Number(number2);
-
-      // Save Result to ResultMem for continuos Addition
+      Result = ResultA + ResultB;
       ResultMem = Result;
-      
-      console.log("After ADD Result " + Result);
 
-      console.log("ResultA: " + ResultA + " + ResultB: " + ResultB + " = " + Result + " , ResultMem: " + ResultMem);
+      console.log("ResultA: " + ResultA + " + ResultB: " + ResultB + " = " + Result);
+      
       textbox.value = Result;
       rcode = 1;
       counter++;
+
+
+      //// Result = Number(num1) + Number(num2);
+      // console.log("Before ADD Result " + Result);
+      // Result = Number(number1) + Number(number2);
+
+      // // Save Result to ResultMem for continuos Addition
+      // ResultMem = Result;
+      
+      // console.log("After ADD Result " + Result);
+
+      // console.log("ResultA: " + ResultA + " + ResultB: " + ResultB + " = " + Result + " , ResultMem: " + ResultMem);
+      // textbox.value = Result;
+      // rcode = 1;
+      // counter++;
       
     }
 
@@ -267,14 +275,23 @@
           
           console.log("num1:" + strNumber1);
           console.log("num2:" + strNumber2);
-          
-          AddNumbers(ResultA, ResultB);
-          ResultA = ResultMem;
-          //counter++;
+          // single variable
+          // AddNumbers(ResultA, ResultB);
+          // double variables
+          AddNumbers(strNumber1, strNumber2);
+          console.log("Conter: " + counter);
+          // or ResultA = Result
 
           // reset input array
           value1 = [];
           value2 = [];
+
+          // Single Variable
+          // ResultA = 0;
+          // ResultB = 0;
+
+          // when? = continues 
+          // ResultB = ResultMem;
           // we can move in to inputvalue()
 
           console.log("Value1/ResultA: " + ResultA);
@@ -317,6 +334,7 @@
           // Display Result
           displayResult(rcode)
           // reset input number
+                    
           value1 = [];
           value2 = [];
           // ResultA = 0;
@@ -344,8 +362,8 @@
 
 function displayResult(rcode){
   // concat input numbers to string   
-  let strNumber = value1.join("");
-  // strNumber is equal to ResultA
+  let strNumber1 = value1.join("");
+  let strNumber2 = value2.join("");
 
   switch (rcode) {
     case 1:
@@ -360,12 +378,25 @@ function displayResult(rcode){
       // } else {
       //   AddNumbers(ResultA, ResultB);
       // }
-      AddNumbers(ResultA, ResultB);
+      AddNumbers(Result, strNumber2);
       
+      ResultA = 0;
+      ResultB = 0;
+      ResultA = ResultMem;
+      console.log("= ResultA : " + ResultA);
+      console.log("= ResultB : " + ResultB);
+      console.log("= ResultMem : " + ResultMem);
+      console.log("= Conter: " + counter);
       // ResultA = Result;
       // ResultB = 0;
       // counter++;
       //ResultA = Result; 
+
+      // value1 = [];
+      // value2 = [];
+
+      // how to check pattern
+
 
 
       break;
