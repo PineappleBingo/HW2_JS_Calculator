@@ -33,7 +33,7 @@
 
 <script>
     
-    var value1, value2, Result, ResultA, ResultB, ops, counter, rcode;
+    var value1, value2, Result, ResultA, ResultB, ResultMem, ops, counter, rcode;
     
     // In order to work with multi-digits number, value1 set to array.
     value1 = [];
@@ -41,35 +41,53 @@
     Result = 0;
     ResultA = 0;
     ResultB = 0;
+    ResultMem = 0;
     ops = "";
     rcode = 0;
     counter = 0;
     
     function displayValue(number){
-      // // append number.toString to vale1 array
-      // value1.push(number.toString());
-      // // concat input numbers to string 
-      // let strNumber = value1.join("");
 
-      // console.log("strNumber:" + strNumber);
-      // return strNumber;
+      // // Case when firt input in 
+      // if(counter % 2 == 0){
+      //   // append number.toString to vale1 array
+      //   value1.push(number.toString());
+      //   // concat input numbers to string
+      //   let strNumber1 = value1.join("");
+      //   console.log("strNumber1:" + strNumber1);
+      //   return strNumber1;
+      // // Case when Second input in
+      // } else {
+      //   // append number.toString to vale2 array
+      //   value2.push(number.toString());
+      //   // concat input numbers to string
+      //   let strNumber2 = value2.join("");
+      //   console.log("strNumber2:" + strNumber2);
+      //   return strNumber2;
+      // }
 
-      /////////// using double variable ///////////////
-      if(counter % 2 == 0){
+      // Case when firt input in 
+      if (counter % 2 == 0) {
         // append number.toString to vale1 array
         value1.push(number.toString());
         // concat input numbers to string
         let strNumber1 = value1.join("");
-        console.log("strNumber1:" + strNumber1);
+        ResultA = Number(strNumber1);
+        console.log("strNumber1:" + strNumber1 + " ResultA: " + ResultA);
+
         return strNumber1;
+        // Case when Second input in
       } else {
         // append number.toString to vale2 array
         value2.push(number.toString());
         // concat input numbers to string
         let strNumber2 = value2.join("");
-        console.log("strNumber2:" + strNumber2);
+        ResultB = Number(strNumber2);
+        console.log("strNumber2:" + strNumber2 + " ResultB: " + ResultB);
+
         return strNumber2;
       }
+
 
     }
 
@@ -94,21 +112,39 @@
       // // console.log("Result:" + Result);
       // rcode = 1;
 
+      
       /////////// using double variable ///////////////
-      let sum = 0;
-      if (counter % 2 == 0) {
-        sum = ResultA + Number(number1);
-        ResultA = sum;
-        console.log("Result Even:" + ResultA);
-      } else { 
-        sum = ResultB + Number(number2);
-        ResultB = sum;
-        console.log("Result Odd:" + ResultB);
-      }
-      Result = ResultA + ResultB;
+      // let sum = 0;
+      // if (counter % 2 == 0) {
+      //   sum = ResultA + Number(number1);
+      //   ResultA = sum;
+      //   console.log("Result Even:" + ResultA);
+      // } else { 
+      //   sum = ResultB + Number(number2);
+      //   ResultB = sum;
+      //   console.log("Result Odd:" + ResultB);
+      // }
+
+      // Result = ResultA + ResultB;
+      // console.log("ResultA: " + ResultA + " + ResultB: " + ResultB + " = " + Result);
+      // textbox.value = Result;
+      // rcode = 1;
+
+
+      // Result = Number(num1) + Number(num2);
+      console.log("Before ADD Result " + Result);
+      Result = Number(number1) + Number(number2);
+
+      // Save Result to ResultMem for continuos Addition
+      ResultMem = Result;
+      
+      console.log("After ADD Result " + Result);
+
+      console.log("ResultA: " + ResultA + " + ResultB: " + ResultB + " = " + Result + " , ResultMem: " + ResultMem);
       textbox.value = Result;
       rcode = 1;
-
+      counter++;
+      
     }
 
     function SubNumbers(number1, number2) {
@@ -227,23 +263,25 @@
           break;
         case 55:
           // Plus
-          textbox.value = "";
+          textbox.value = Result;
           
           console.log("num1:" + strNumber1);
           console.log("num2:" + strNumber2);
           
-          AddNumbers(strNumber1, strNumber2);
-          ///////////// using double variable ///////////////
-          // let strNumber1 = value1.join("");
-          // let strNumber2 = value2.join("");
-
-          // textbox.value = "";
-          // AddNumbers(strNumber1, strNumber2);
-          counter++;
+          AddNumbers(ResultA, ResultB);
+          ResultA = ResultMem;
+          //counter++;
 
           // reset input array
           value1 = [];
           value2 = [];
+          // we can move in to inputvalue()
+
+          console.log("Value1/ResultA: " + ResultA);
+          console.log("Value2/ResultB: " + ResultB);
+          console.log("Result: " + Result);
+          console.log("ResultMem: " + ResultMem);
+
 
           break;
         case 66:
@@ -281,14 +319,24 @@
           // reset input number
           value1 = [];
           value2 = [];
-          conter = 0;
+          // ResultA = 0;
+          // ResultB = 0;
+          
+          //counter = 0;
 
           break;
         case 33:
           // AC
           // Reset result/variables to 0
           value1 = [];
+          value2 = [];
           Result = 0;
+          ResultA = 0;
+          ResultB = 0;
+          ResultMem = 0;
+          counter = 0;
+          rcode = 0;
+          ops = "";
           textbox.value = 0;
           break;
       }
@@ -297,13 +345,28 @@
 function displayResult(rcode){
   // concat input numbers to string   
   let strNumber = value1.join("");
+  // strNumber is equal to ResultA
 
   switch (rcode) {
     case 1:
-      // if ResultA or ResultB is Empty 
-      AddNumbers(Result, strNumber);
+      // AddNumbers(ResultA, ResultB);
+      // textbox.value = "from = " + Result;
+      // console.log("print result?" + Result);
+      
+      // // if ResultA or ResultB is Empty 
+      // if ( ResultB == 0){
+      //   AddNumbers(Result, ResultA);
+      // // Case when user click num1, + , num2, = clicked
+      // } else {
+      //   AddNumbers(ResultA, ResultB);
+      // }
+      AddNumbers(ResultA, ResultB);
+      
+      // ResultA = Result;
+      // ResultB = 0;
+      // counter++;
+      //ResultA = Result; 
 
-      // if not AddNumbers()??
 
       break;
     case 2:
