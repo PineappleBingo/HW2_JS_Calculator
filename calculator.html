@@ -110,13 +110,13 @@
       /////////// using double variable /////////////// working code
       let sum = 0;
       if (counter % 2 == 0) {
-        sum = ResultA + Number(number1);
-        ResultA = sum;
-        console.log("Result Even:" + ResultA);
+        ResultA = ResultA + Number(number1);
+
+        console.log("+ Result Even:" + ResultA);
       } else { 
-        sum = ResultB + Number(number2);
-        ResultB = sum;
-        console.log("Result Odd:" + ResultB);
+        ResultB = ResultB + Number(number2);
+
+        console.log("+ Result Odd:" + ResultB);
       }
 
       Result = ResultA + ResultB;
@@ -147,38 +147,49 @@
 
     function SubNumbers(number1, number2) {
       // Result = Result + (- 1 * inputValue)
-      let tempResult1 = Number(number1);
-      console.log("b Result: "+ Result);
-      console.log("input 2: " + number2);
+      // let tempResult1 = Number(number1);
+      // console.log("b Result: "+ Result);
+      // console.log("input 2: " + number2);
 
-      // Result = Number(number1) - Number(number2);
+      // // Result = Number(number1) - Number(number2);
       
-      
-      
-      // Case when first input in
-      if (number1.length == 0) {
+      // // Case when first input in
+      // if (number1.length == 0) {
         
-      } else {
-        Result = Result + (Number(number2) * -1);
-        console.log("a Result: " + Result);
-      }
-
-      // // Case when first value(Result) in
-      // if (number2.length == 0) {
-      //   // tempResult2 set to 1 before it gets its own value
-      //   tempResult2 = 1;
-      //   Result = tempResult1 * tempResult2;
-      //   // Case when second value in
       // } else {
-      //   tempResult2 = Number(number2);
-      //   Result = tempResult1 * tempResult2;
+      //   Result = Result + (Number(number2) * -1);
+      //   console.log("a Result: " + Result);
       // }
 
+      /////////// using double variable /////////////// 
+      if (counter % 2 == 0) {
+        // ResultA = ResultA + (Number(number1) * -1);
+        ResultA = ResultA + Number(number1);
+        
+        console.log("- Result Even:" + ResultA);
+      } else {
+        ResultB = ResultB + (Number(number2) * -1);
+        // ResultB = ResultB + Number(number2);
 
+        console.log("- Result Odd:" + ResultB);
+      }
 
+      // Result = ResultA + (ResultB * -1);
+      Result = ResultA + (ResultB);
+      ResultMem = Result;
+
+      console.log("ResultA: " + ResultA + " - ResultB: " + ResultB + " = " + Result);
+      
+      ResultA = 0;
+      ResultB = 0;
+      ResultA = ResultMem;
+      
+      // ResultA = Result;
       textbox.value = Result;
-      // console.log("Result:" + Result);
-      rcode = 2;
+      rcode = 1;
+      counter++;
+
+
     }
 
     function MultNumbers(number1, number2) {
@@ -272,21 +283,6 @@
           // reset input array
           value2 = [];
           value1 = [];
-          
-          
-          // single variable
-          // AddNumbers(ResultA, ResultB);
-          // double variables
-          // or ResultA = Result
-
-
-          // Single Variable
-          // ResultA = 0;
-          // ResultB = 0;
-
-          // when? = continues 
-          // ResultB = ResultMem;
-          // we can move in to inputvalue()
 
           console.log("Value1/ResultA: " + ResultA);
           console.log("Value2/ResultB: " + ResultB);
@@ -297,10 +293,23 @@
           break;
         case 66:
           // Minus
-          textbox.value = "";
-          SubNumbers(Result, strNumber);
+
+          textbox.value = Result;
+
+          console.log("num1:" + strNumber1);
+          console.log("num2:" + strNumber2);
+
+          SubNumbers(strNumber1, strNumber2);
+          console.log("Conter: " + counter);
           // reset input array
+          value2 = [];
           value1 = [];
+          console.log("Value1/ResultA: " + ResultA);
+          console.log("Value2/ResultB: " + ResultB);
+          console.log("Result: " + Result);
+          console.log("ResultMem: " + ResultMem);
+        
+
           break;
         case 77:
           // Multiply
@@ -377,25 +386,26 @@ function displayResult(rcode){
       ResultA = 0;
       ResultB = 0;
       ResultA = ResultMem;
+
       console.log("= ResultA : " + ResultA);
       console.log("= ResultB : " + ResultB);
       console.log("= ResultMem : " + ResultMem);
       console.log("= Conter: " + counter);
-      // ResultA = Result;
-      // ResultB = 0;
-      // counter++;
-      //ResultA = Result; 
-
-      // value1 = [];
-      // value2 = [];
-
-      // how to check pattern
-
-
 
       break;
     case 2:
-      SubNumbers(Result, strNumber);
+
+      SubNumbers(Result, strNumber2);
+      
+      ResultA = 0;
+      ResultB = 0;
+      ResultA = ResultMem;
+      
+      console.log("= ResultA : " + ResultA);
+      console.log("= ResultB : " + ResultB);
+      console.log("= ResultMem : " + ResultMem);
+      console.log("= Conter: " + counter);
+
       break;
     case 3:
       MultNumbers(Result, strNumber);
