@@ -128,31 +128,50 @@
     }
 
     function MultNumbers(number1, number2) {
-      // Result = Result * inputValue
-      let tempResult1 = Number(number1); // result
-      let tempResult2 = Number(number2); // input number2 
+      
+      // // Result = Result * inputValue
+      // let tempResult1 = Number(number1); // result
+      // let tempResult2 = Number(number2); // input number2 
      
-      // Case when result = 0
-      if( tempResult1 == 0){
-        // return 0        
-        Result = tempResult1 * Number(number2);
+      // // Case when result = 0
+      // if( tempResult1 == 0){
+      //   // return 0        
+      //   Result = tempResult1 * Number(number2);
  
-      // Case when result != 0
-      } else {
-          // Case when first value(Result) in
-          if (number2.length == 0) {
-            // tempResult2 set to 1 before it gets its own value
-            tempResult2 = 1;
-            Result = tempResult1 * tempResult2;
-          // Case when second value in
-          } else {
-            tempResult2 = Number(number2);
-            Result = tempResult1 * tempResult2;
-          }
-      }
+      // // Case when result != 0
+      // } else {
+      //     // Case when first value(Result) in
+      //     if (number2.length == 0) {
+      //       // tempResult2 set to 1 before it gets its own value
+      //       tempResult2 = 1;
+      //       Result = tempResult1 * tempResult2;
+      //     // Case when second value in
+      //     } else {
+      //       tempResult2 = Number(number2);
+      //       Result = tempResult1 * tempResult2;
+      //     }
+      // }
 
+      // textbox.value = Result;
+      // rcode = 3;
+
+      
+      if (counter % 2 == 0) {
+        ResultA = ResultA + Number(number1);
+      } else {
+        ResultB = ResultB + (Number(number2) * -1);
+      }
+      // Result = Result - inputValue
+      Result = ResultA + ResultB;
+      ResultMem = Result;
+
+      //console.log("ResultA: " + ResultA + " - ResultB: " + ResultB + " = " + Result);
       textbox.value = Result;
       rcode = 3;
+      counter++;
+
+
+
     }
 
     function DivNumbers(number1, number2) {
