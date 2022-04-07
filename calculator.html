@@ -55,22 +55,17 @@
         // concat input numbers to string
         let strNumber1 = value1.join("");
 
-        // single variable
-        // ResultA = Number(strNumber1);
-        console.log("strNumber1:" + strNumber1 + " ResultA: " + ResultA);
-
+        // console.log("strNumber1:" + strNumber1 + " ResultA: " + ResultA);
         return strNumber1;
-        // Case when Second input in
+
+      // Case when Second input in
       } else {
         // append number.toString to vale2 array
         value2.push(number.toString());
         // concat input numbers to string
         let strNumber2 = value2.join("");
         
-        // single variable
-        // ResultB = Number(strNumber2);
-        console.log("strNumber2:" + strNumber2 + " ResultB: " + ResultB);
-
+        // console.log("strNumber2:" + strNumber2 + " ResultB: " + ResultB);
         return strNumber2;
       }
     }
@@ -95,89 +90,37 @@
           return strNumber2;
         }
       }
-
     }
 
     function AddNumbers(number1, number2){
-      // Result = Result + inputValue
 
-      // Result = Number(number1) + Number(number2);
-      // textbox.value = Result;
-      // // console.log("Result:" + Result);
-      // rcode = 1;
-
-      
-      /////////// using double variable /////////////// working code
-      let sum = 0;
       if (counter % 2 == 0) {
         ResultA = ResultA + Number(number1);
-
-        console.log("+ Result Even:" + ResultA);
       } else { 
         ResultB = ResultB + Number(number2);
-
-        console.log("+ Result Odd:" + ResultB);
       }
-
+      // Result = Result + inputValue
       Result = ResultA + ResultB;
       ResultMem = Result;
 
-      console.log("ResultA: " + ResultA + " + ResultB: " + ResultB + " = " + Result);
-      
+      //console.log("ResultA: " + ResultA + " + ResultB: " + ResultB + " = " + Result);
       textbox.value = Result;
       rcode = 1;
       counter++;
-
-
-      //// Result = Number(num1) + Number(num2);
-      // console.log("Before ADD Result " + Result);
-      // Result = Number(number1) + Number(number2);
-
-      // // Save Result to ResultMem for continuos Addition
-      // ResultMem = Result;
-      
-      // console.log("After ADD Result " + Result);
-
-      // console.log("ResultA: " + ResultA + " + ResultB: " + ResultB + " = " + Result + " , ResultMem: " + ResultMem);
-      // textbox.value = Result;
-      // rcode = 1;
-      // counter++;
       
     }
 
     function SubNumbers(number1, number2) {
-      // Result = Result + (- 1 * inputValue)
-      // let tempResult1 = Number(number1);
-      // console.log("b Result: "+ Result);
-      // console.log("input 2: " + number2);
-
-      // // Result = Number(number1) - Number(number2);
-      
-      // // Case when first input in
-      // if (number1.length == 0) {
-        
-      // } else {
-      //   Result = Result + (Number(number2) * -1);
-      //   console.log("a Result: " + Result);
-      // }
-
-      /////////// using double variable /////////////// 
       if (counter % 2 == 0) {
-
         ResultA = ResultA + Number(number1);
-        
-        console.log("- Result Even:" + ResultA);
       } else {
         ResultB = ResultB + (Number(number2) * -1);
-        
-        console.log("- Result Odd:" + ResultB);
       }
-
+      // Result = Result - inputValue
       Result = ResultA + ResultB;
       ResultMem = Result;
 
-      console.log("ResultA: " + ResultA + " - ResultB: " + ResultB + " = " + Result);
-      
+      //console.log("ResultA: " + ResultA + " - ResultB: " + ResultB + " = " + Result);
       textbox.value = Result;
       rcode = 2;
       counter++;
