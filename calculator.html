@@ -41,7 +41,7 @@
     Result = 0;
     ResultA = 0;
     ResultB = 0;
-    ResultMem = 0;
+    ResultMem = 1;
     ops = "";
     rcode = 0;
     counter = 0;
@@ -154,23 +154,22 @@
 
       // textbox.value = Result;
       // rcode = 3;
-
       
       if (counter % 2 == 0) {
-        ResultA = ResultA + Number(number1);
+        ResultA = ResultMem;
+        ResultA = ResultA * Number(number1);
       } else {
-        ResultB = ResultB + (Number(number2) * -1);
+        ResultB = 1;
+        ResultB = ResultB * Number(number2);
       }
-      // Result = Result - inputValue
-      Result = ResultA + ResultB;
+      // Result = Result * inputValue
+      Result = ResultA * ResultB;
       ResultMem = Result;
 
-      //console.log("ResultA: " + ResultA + " - ResultB: " + ResultB + " = " + Result);
+      console.log("ResultA: " + ResultA + " ResultB: " + ResultB + " = " + Result);
       textbox.value = Result;
       rcode = 3;
       counter++;
-
-
 
     }
 
@@ -227,50 +226,49 @@
         case 55:
           // Plus
           textbox.value = Result;
-          
-          console.log("num1:" + strNumber1);
-          console.log("num2:" + strNumber2);
-
-          // working codoe
           AddNumbers(strNumber1, strNumber2);
-          console.log("Conter: " + counter);
+
           // reset input array
-          value2 = [];
           value1 = [];
-
-          console.log("Value1/ResultA: " + ResultA);
-          console.log("Value2/ResultB: " + ResultB);
-          console.log("Result: " + Result);
-          console.log("ResultMem: " + ResultMem);
-
+          value2 = [];
 
           break;
         case 66:
           // Minus
-
           textbox.value = Result;
-
-          console.log("num1:" + strNumber1);
-          console.log("num2:" + strNumber2);
-
           SubNumbers(strNumber1, strNumber2);
-          console.log("Conter: " + counter);
           // reset input array
-          value2 = [];
           value1 = [];
-          console.log("Value1/ResultA: " + ResultA);
-          console.log("Value2/ResultB: " + ResultB);
-          console.log("Result: " + Result);
-          console.log("ResultMem: " + ResultMem);
-        
+          value2 = [];
 
           break;
         case 77:
           // Multiply
-          textbox.value = "";
-          MultNumbers(Result, strNumber);
-          // reset input number
+          textbox.value = Result;
+          
+          console.log("num1:" + strNumber1);
+          console.log("num2:" + strNumber2);
+          
+          // ResultA & ResultB initialized to 1 for multiplication
+          // if (strNumber2.length == 0){
+          //   ResultA = 1;
+          //   ResultB = 1;
+          // } else {
+          //   ResultA = ResultMem;
+          // }
+                    
+          MultNumbers(strNumber1, strNumber2);
+
+          console.log("Conter: " + counter);
+          // reset input array
           value1 = [];
+          value2 = [];
+
+          console.log("Value1/ResultA: " + ResultA);
+          console.log("Value2/ResultB: " + ResultB);
+          console.log("Result: " + Result);
+          console.log("ResultMem: " + ResultMem);
+
           break;
         case 88:
           // Divide
@@ -308,7 +306,7 @@
           Result = 0;
           ResultA = 0;
           ResultB = 0;
-          ResultMem = 0;
+          ResultMem = 1;
           counter = 0;
           rcode = 0;
           ops = "";
@@ -318,51 +316,36 @@
     }
 
 function displayResult(rcode){
-  // concat input numbers to string   
-  let strNumber1 = value1.join("");
+  // let strNumber1 = value1.join("");
+  // Second Input Value
   let strNumber2 = value2.join("");
 
   switch (rcode) {
     case 1:
-      // AddNumbers(ResultA, ResultB);
-      // textbox.value = "from = " + Result;
-      // console.log("print result?" + Result);
-      
-      // // if ResultA or ResultB is Empty 
-      // if ( ResultB == 0){
-      //   AddNumbers(Result, ResultA);
-      // // Case when user click num1, + , num2, = clicked
-      // } else {
-      //   AddNumbers(ResultA, ResultB);
-      // }
       AddNumbers(Result, strNumber2);
-      
       ResultA = 0;
       ResultB = 0;
       ResultA = ResultMem;
-
-      console.log("= ResultA : " + ResultA);
-      console.log("= ResultB : " + ResultB);
-      console.log("= ResultMem : " + ResultMem);
-      console.log("= Conter: " + counter);
-
       break;
+
     case 2:
-
       SubNumbers(Result, strNumber2);
-      
       ResultA = 0;
       ResultB = 0;
       ResultA = ResultMem;
-      
+      break;
+
+    case 3:
+      MultNumbers(Result, strNumber2);
+      ResultA = 1;
+      ResultB = 1;
+      ResultA = ResultMem;
+
       console.log("= ResultA : " + ResultA);
       console.log("= ResultB : " + ResultB);
       console.log("= ResultMem : " + ResultMem);
       console.log("= Conter: " + counter);
 
-      break;
-    case 3:
-      MultNumbers(Result, strNumber);
       break;
     case 4:
       DivNumbers(Result, strNumber);
