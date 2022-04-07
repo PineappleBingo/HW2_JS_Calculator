@@ -163,32 +163,24 @@
 
       /////////// using double variable /////////////// 
       if (counter % 2 == 0) {
-        // ResultA = ResultA + (Number(number1) * -1);
+
         ResultA = ResultA + Number(number1);
         
         console.log("- Result Even:" + ResultA);
       } else {
         ResultB = ResultB + (Number(number2) * -1);
-        // ResultB = ResultB + Number(number2);
-
+        
         console.log("- Result Odd:" + ResultB);
       }
 
-      // Result = ResultA + (ResultB * -1);
-      Result = ResultA + (ResultB);
+      Result = ResultA + ResultB;
       ResultMem = Result;
 
       console.log("ResultA: " + ResultA + " - ResultB: " + ResultB + " = " + Result);
       
-      ResultA = 0;
-      ResultB = 0;
-      ResultA = ResultMem;
-      
-      // ResultA = Result;
       textbox.value = Result;
-      rcode = 1;
+      rcode = 2;
       counter++;
-
 
     }
 
