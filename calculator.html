@@ -123,7 +123,7 @@
     }
 
     function MultNumbers(number1, number2) {
-      // Case when input value is empty
+      // Case when input value is empty i.e) input1 x input2 = result x input3
       let tempInput1 = Number(number1);
       if(number1.length == 0){
         tempInput1 = 1;
@@ -148,17 +148,30 @@
     }
 
     function DivNumbers(number1, number2) {
-      // Result = Result / inputValue
-      if (Number(number2) == 0){
-        textbox.value = "Can't divide by zero";
-      } else {
-        let inputNum1 = Number(number1);
-
-        Result = Number(number1) / Number(number2);
-        textbox.value = Result;
+      // Case when input value is empty i.e) input1 x input2 = result x input3
+      let tempInput1 = Number(number1);
+      if (number1.length == 0) {
+        tempInput1 = 1;
       }
-      // console.log("Result:" + Result);
+      // Case when the first input value
+      if (counter % 2 == 0) {
+        ResultB = 1;
+        ResultA = ResultMem // 1
+        ResultA = ResultA * tempInput1;
+        // Case when the second input value
+      } else {
+        ResultB = 1;
+        ResultB = ResultB * Number(number2);
+        console.log("Numer(number2): " + Number(number2));
+      }
+      // Result = Result / inputValue
+      Result = ResultA / ResultB;
+      ResultMem = Result;
+      
+      textbox.value = Result;
       rcode = 4;
+      counter++;
+
     }
 
     function inputValue(bcode){
@@ -201,7 +214,6 @@
           // Plus
           textbox.value = Result;
           AddNumbers(strNumber1, strNumber2);
-
           // reset input array
           value1 = [];
           value2 = [];
@@ -220,34 +232,18 @@
           // Multiply
           textbox.value = Result;
           MultNumbers(strNumber1, strNumber2);
-
-          console.log("Conter: " + counter);
           // reset input array
           value1 = [];
           value2 = [];
-
-          console.log("Value1/ResultA: " + ResultA);
-          console.log("Value2/ResultB: " + ResultB);
-          console.log("Result: " + Result);
-          console.log("ResultMem: " + ResultMem);
 
           break;
         case 88:
           // Divide
           textbox.value = Result;
-
-          console.log("num1:" + strNumber1);
-          console.log("num2:" + strNumber2);
-
           DivNumbers(strNumber1, strNumber2);
           // reset input number
           value1 = [];
           value2 = [];
-
-          console.log("Value1/ResultA: " + ResultA);
-          console.log("Value2/ResultB: " + ResultB);
-          console.log("Result: " + Result);
-          console.log("ResultMem: " + ResultMem);
 
           break;
         case 99:
@@ -310,17 +306,10 @@ function displayResult(rcode){
 
       break;
     case 4:
-
       DivNumbers(Result, strNumber2);
-      // ResultA = 0;
-      // ResultB = 0;
-      // ResultA = ResultMem;
-
-      // console.log("= ResultA : " + ResultA);
-      // console.log("= ResultB : " + ResultB);
-      // console.log("= ResultMem : " + ResultMem);
-      // console.log("= Conter: " + counter);
-      // console.log("------------------------------------------------------");
+      ResultA = 0;
+      ResultB = 0;
+      ResultA = ResultMem;
 
       break;
   }
