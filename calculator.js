@@ -1,4 +1,3 @@
-    
 var value1, value2, Result, ResultA, ResultB, ResultMem, counter, rcode;
 
 // In order to work with multi-digits number, value1 and value2 are defined in arrays
@@ -37,20 +36,20 @@ function deleteNumber(){
     if (counter % 2 == 0) {
     value1.splice(-1, 1);
     let strNumber1 = value1.join("");
-    if (strNumber1.length == 0 ) {
-        return 0;
-    } else {
-        return strNumber1;
-    }
+      if (strNumber1.length == 0 ) {
+          return 0;
+      } else {
+          return strNumber1;
+      }
     // Case when the second input value
     } else {
     value2.splice(-1, 1);
     let strNumber2 = value2.join("");
-    if (strNumber2.length == 0) {
-        return 0;
-    } else {
-        return strNumber2;
-    }
+      if (strNumber2.length == 0) {
+          return 0;
+      } else {
+          return strNumber2;
+      }
     }
 }
 
