@@ -33,29 +33,25 @@
 
 <script>
     
-    var value1, value2, Result, ResultA, ResultB, ResultMem, ops, counter, rcode;
+    var value1, value2, Result, ResultA, ResultB, ResultMem, counter, rcode;
     
-    // In order to work with multi-digits number, value1 set to array.
+    // In order to work with multi-digits number, value1 and value2 are defined in arrays
     value1 = [];
     value2 = [];
     Result = 0;
     ResultA = 0;
     ResultB = 0;
     ResultMem = 1;
-    ops = "";
     rcode = 0;
     counter = 0;
     
     function displayValue(number){
-
       // Case when firt input in 
       if (counter % 2 == 0) {
         // append number.toString to vale1 array
         value1.push(number.toString());
         // concat input numbers to string
         let strNumber1 = value1.join("");
-
-        // console.log("strNumber1:" + strNumber1 + " ResultA: " + ResultA);
         return strNumber1;
 
       // Case when Second input in
@@ -64,8 +60,6 @@
         value2.push(number.toString());
         // concat input numbers to string
         let strNumber2 = value2.join("");
-        
-        // console.log("strNumber2:" + strNumber2 + " ResultB: " + ResultB);
         return strNumber2;
       }
     }
@@ -104,7 +98,6 @@
       Result = ResultA + ResultB;
       ResultMem = Result;
 
-      //console.log("ResultA: " + ResultA + " + ResultB: " + ResultB + " = " + Result);
       textbox.value = Result;
       rcode = 1;
       counter++;
@@ -123,7 +116,6 @@
       Result = ResultA + ResultB;
       ResultMem = Result;
 
-      //console.log("ResultA: " + ResultA + " - ResultB: " + ResultB + " = " + Result);
       textbox.value = Result;
       rcode = 2;
       counter++;
@@ -150,12 +142,9 @@
       Result = ResultA * ResultB;
       ResultMem = Result;
 
-      // console.log("ResultA: " + ResultA + " ResultB: " + ResultB + " = " + Result);
-      // console.log("---------------------------------------------------");
       textbox.value = Result;
       rcode = 3;
       counter++;
-
     }
 
     function DivNumbers(number1, number2) {
@@ -230,16 +219,6 @@
         case 77:
           // Multiply
           textbox.value = Result;
-          
-          console.log("num1:" + strNumber1);
-          console.log("num2:" + strNumber2);
-          
-          // // ResultA & ResultB initialized to 1
-          // if (strNumber1.length == 0){
-          //   ResultA = 1;
-          //   // ResultB = 1;
-          // }
-                    
           MultNumbers(strNumber1, strNumber2);
 
           console.log("Conter: " + counter);
@@ -255,10 +234,21 @@
           break;
         case 88:
           // Divide
-          textbox.value = "";
-          DivNumbers(Result, strNumber);
+          textbox.value = Result;
+
+          console.log("num1:" + strNumber1);
+          console.log("num2:" + strNumber2);
+
+          DivNumbers(strNumber1, strNumber2);
           // reset input number
           value1 = [];
+          value2 = [];
+
+          console.log("Value1/ResultA: " + ResultA);
+          console.log("Value2/ResultB: " + ResultB);
+          console.log("Result: " + Result);
+          console.log("ResultMem: " + ResultMem);
+
           break;
         case 99:
           // dot
@@ -272,13 +262,8 @@
           // Display Result
           displayResult(rcode)
           // reset input number
-                    
           value1 = [];
           value2 = [];
-          // ResultA = 0;
-          // ResultB = 0;
-          
-          //counter = 0;
 
           break;
         case 33:
@@ -299,7 +284,6 @@
     }
 
 function displayResult(rcode){
-  // let strNumber1 = value1.join("");
   // Second Input Value
   let strNumber2 = value2.join("");
 
@@ -320,18 +304,24 @@ function displayResult(rcode){
 
     case 3:
       MultNumbers(Result, strNumber2);
-      ResultA = 1;
-      ResultB = 1;
+      ResultA = 0;
+      ResultB = 0;
       ResultA = ResultMem;
 
-      console.log("= ResultA : " + ResultA);
-      console.log("= ResultB : " + ResultB);
-      console.log("= ResultMem : " + ResultMem);
-      console.log("= Conter: " + counter);
-      console.log("-------------------------------------------------------------");
       break;
     case 4:
-      DivNumbers(Result, strNumber);
+
+      DivNumbers(Result, strNumber2);
+      // ResultA = 0;
+      // ResultB = 0;
+      // ResultA = ResultMem;
+
+      // console.log("= ResultA : " + ResultA);
+      // console.log("= ResultB : " + ResultB);
+      // console.log("= ResultMem : " + ResultMem);
+      // console.log("= Conter: " + counter);
+      // console.log("------------------------------------------------------");
+
       break;
   }
 }
