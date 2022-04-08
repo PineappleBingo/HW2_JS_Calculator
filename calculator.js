@@ -37,11 +37,11 @@ function deleteNumber(){
     if (counter % 2 == 0) {
     value1.splice(-1, 1);
     let strNumber1 = value1.join("");
-    if (strNumber1.length == 0 ) {
-        return 0;
-    } else {
-        return strNumber1;
-    }
+        if (strNumber1.length == 0 ) {
+            return 0;
+        } else {
+            return strNumber1;
+        }
     // Case when the second input value
     } else {
     value2.splice(-1, 1);
