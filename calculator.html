@@ -93,9 +93,10 @@
     }
 
     function AddNumbers(number1, number2){
-
+      // Case when the first input value
       if (counter % 2 == 0) {
         ResultA = ResultA + Number(number1);
+      // Case when the second input value
       } else { 
         ResultB = ResultB + Number(number2);
       }
@@ -111,8 +112,10 @@
     }
 
     function SubNumbers(number1, number2) {
+      // Case when the first input value
       if (counter % 2 == 0) {
         ResultA = ResultA + Number(number1);
+      // Case when the second input value
       } else {
         ResultB = ResultB + (Number(number2) * -1);
       }
@@ -128,36 +131,17 @@
     }
 
     function MultNumbers(number1, number2) {
-      
-      // // Result = Result * inputValue
-      // let tempResult1 = Number(number1); // result
-      // let tempResult2 = Number(number2); // input number2 
-     
-      // // Case when result = 0
-      // if( tempResult1 == 0){
-      //   // return 0        
-      //   Result = tempResult1 * Number(number2);
- 
-      // // Case when result != 0
-      // } else {
-      //     // Case when first value(Result) in
-      //     if (number2.length == 0) {
-      //       // tempResult2 set to 1 before it gets its own value
-      //       tempResult2 = 1;
-      //       Result = tempResult1 * tempResult2;
-      //     // Case when second value in
-      //     } else {
-      //       tempResult2 = Number(number2);
-      //       Result = tempResult1 * tempResult2;
-      //     }
-      // }
-
-      // textbox.value = Result;
-      // rcode = 3;
-      
+      // Case when input value is empty
+      let tempInput1 = Number(number1);
+      if(number1.length == 0){
+        tempInput1 = 1;
+      }
+      // Case when the first input value
       if (counter % 2 == 0) {
-        ResultA = ResultMem;
-        ResultA = ResultA * Number(number1);
+        ResultB = 1;
+        ResultA = ResultMem // 1
+        ResultA = ResultA * tempInput1;
+      // Case when the second input value
       } else {
         ResultB = 1;
         ResultB = ResultB * Number(number2);
@@ -166,7 +150,8 @@
       Result = ResultA * ResultB;
       ResultMem = Result;
 
-      console.log("ResultA: " + ResultA + " ResultB: " + ResultB + " = " + Result);
+      // console.log("ResultA: " + ResultA + " ResultB: " + ResultB + " = " + Result);
+      // console.log("---------------------------------------------------");
       textbox.value = Result;
       rcode = 3;
       counter++;
@@ -249,12 +234,10 @@
           console.log("num1:" + strNumber1);
           console.log("num2:" + strNumber2);
           
-          // ResultA & ResultB initialized to 1 for multiplication
-          // if (strNumber2.length == 0){
+          // // ResultA & ResultB initialized to 1
+          // if (strNumber1.length == 0){
           //   ResultA = 1;
-          //   ResultB = 1;
-          // } else {
-          //   ResultA = ResultMem;
+          //   // ResultB = 1;
           // }
                     
           MultNumbers(strNumber1, strNumber2);
@@ -345,7 +328,7 @@ function displayResult(rcode){
       console.log("= ResultB : " + ResultB);
       console.log("= ResultMem : " + ResultMem);
       console.log("= Conter: " + counter);
-
+      console.log("-------------------------------------------------------------");
       break;
     case 4:
       DivNumbers(Result, strNumber);
