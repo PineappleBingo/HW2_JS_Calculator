@@ -1,127 +1,150 @@
-    
-var value1, value2, Result, rcode, isDisplayed;
-    
-// In order to work with multi-digits number, value1 set to array.
+var value1, value2, Result, ResultA, ResultB, ResultMem, counter, rcode;
+
+// In order to work with multi-digits number, value1 and value2 are defined in arrays
 value1 = [];
+value2 = [];
 Result = 0;
+ResultA = 0;
+ResultB = 0;
+ResultMem = 1;
 rcode = 0;
-isDisplayed = false;
+counter = 0;
 
-
-let textbox=document.getElementById("tb");
+let textbox = document.getElementById("tb");
 
 function displayValue(number){
+    // Case when firt input in 
+    if (counter % 2 == 0) {
     // append number.toString to vale1 array
     value1.push(number.toString());
-    // concat input numbers to string 
-    let strNumber = value1.join("");
+    // concat input numbers to string
+    let strNumber1 = value1.join("");
+    return strNumber1;
 
-    console.log("strNumber:" + strNumber);
-    return strNumber;
+    // Case when Second input in
+    } else {
+    // append number.toString to vale2 array
+    value2.push(number.toString());
+    // concat input numbers to string
+    let strNumber2 = value2.join("");
+    return strNumber2;
+    }
 }
 
 function deleteNumber(){
-    // Remove 1-digit at time
+    // Case when the first input value
+    if (counter % 2 == 0) {
     value1.splice(-1, 1);
-    // Concat input number digits
-    let strNumber = value1.join("");
-    
-    if ( strNumber.length == 0 ){
-    return 0;
+    let strNumber1 = value1.join("");
+      if (strNumber1.length == 0 ) {
+          return 0;
+      } else {
+          return strNumber1;
+      }
+    // Case when the second input value
     } else {
-    return strNumber;
+    value2.splice(-1, 1);
+    let strNumber2 = value2.join("");
+      if (strNumber2.length == 0) {
+          return 0;
+      } else {
+          return strNumber2;
+      }
     }
 }
 
 function AddNumbers(number1, number2){
+    // Case when the first input value
+    if (counter % 2 == 0) {
+    ResultA = ResultA + Number(number1);
+    // Case when the second input value
+    } else { 
+    ResultB = ResultB + Number(number2);
+    }
     // Result = Result + inputValue
-    Result = Number(number1) + Number(number2);
+    Result = ResultA + ResultB;
+    ResultMem = Result;
+
     textbox.value = Result;
-    // console.log("Result:" + Result);
     rcode = 1;
+    counter++;
+    
 }
 
 function SubNumbers(number1, number2) {
-    // Result = Result + (- 1 * inputValue)
-    let tempResult1 = Number(number1);
-    console.log("b Result: "+ Result);
-    console.log("input 2: " + number2);
-
-    // Result = Number(number1) - Number(number2);
-    
-    
-    
-    // Case when first input in
-    if (number1.length == 0) {
-    
+    // Case when the first input value
+    if (counter % 2 == 0) {
+    ResultA = ResultA + Number(number1);
+    // Case when the second input value
     } else {
-    Result = Result + (Number(number2) * -1);
-    console.log("a Result: " + Result);
+    ResultB = ResultB + (Number(number2) * -1);
     }
-
-    // // Case when first value(Result) in
-    // if (number2.length == 0) {
-    //   // tempResult2 set to 1 before it gets its own value
-    //   tempResult2 = 1;
-    //   Result = tempResult1 * tempResult2;
-    //   // Case when second value in
-    // } else {
-    //   tempResult2 = Number(number2);
-    //   Result = tempResult1 * tempResult2;
-    // }
-
-
+    // Result = Result - inputValue
+    Result = ResultA + ResultB;
+    ResultMem = Result;
 
     textbox.value = Result;
-    // console.log("Result:" + Result);
     rcode = 2;
+    counter++;
+
 }
 
 function MultNumbers(number1, number2) {
-    // Result = Result * inputValue
-    let tempResult1 = Number(number1); // result
-    let tempResult2 = Number(number2); // input number2 
-    
-    // Case when result = 0
-    if( tempResult1 == 0){
-    // return 0        
-    Result = tempResult1 * Number(number2);
-
-    // Case when result != 0
-    } else {
-        // Case when first value(Result) in
-        if (number2.length == 0) {
-        // tempResult2 set to 1 before it gets its own value
-        tempResult2 = 1;
-        Result = tempResult1 * tempResult2;
-        // Case when second value in
-        } else {
-        tempResult2 = Number(number2);
-        Result = tempResult1 * tempResult2;
-        }
+    // Case when input value is empty i.e) input1 x input2 = result x input3
+    let tempInput1 = Number(number1);
+    if(number1.length == 0){
+    tempInput1 = 1;
     }
+    // Case when the first input value
+    if (counter % 2 == 0) {
+    ResultB = 1;
+    ResultA = ResultMem // 1
+    ResultA = ResultA * tempInput1;
+    // Case when the second input value
+    } else {
+    ResultB = 1;
+    ResultB = ResultB * Number(number2);
+    }
+    // Result = Result * inputValue
+    Result = ResultA * ResultB;
+    ResultMem = Result;
 
     textbox.value = Result;
     rcode = 3;
+    counter++;
 }
 
 function DivNumbers(number1, number2) {
-    // Result = Result / inputValue
-    if (Number(number2) == 0){
-    textbox.value = "Can't divide by zero";
-    } else {
-    let inputNum1 = Number(number1);
-
-    Result = Number(number1) / Number(number2);
-    textbox.value = Result;
+    // Case when input value is empty i.e) input1 x input2 = result x input3
+    let tempInput1 = Number(number1);
+    if (number1.length == 0) {
+    tempInput1 = 1;
     }
-    // console.log("Result:" + Result);
+    // Case when the first input value
+    if (counter % 2 == 0) {
+    ResultB = 1;
+    ResultA = ResultMem // 1
+    ResultA = ResultA * tempInput1;
+    // Case when the second input value
+    } else {
+    ResultB = 1;
+    ResultB = ResultB * Number(number2);
+    console.log("Numer(number2): " + Number(number2));
+    }
+    // Result = Result / inputValue
+    Result = ResultA / ResultB;
+    ResultMem = Result;
+    
+    textbox.value = Result;
     rcode = 4;
+    counter++;
+
 }
 
 function inputValue(bcode){
     // concat input numbers to string 
-    let strNumber = value1.join("");
+    let strNumber1 = value1.join("");
+    let strNumber2 = value2.join("");
 
     switch (bcode) {
     case 1:
@@ -156,31 +179,39 @@ function inputValue(bcode){
         break;
     case 55:
         // Plus
-        textbox.value = "";
-        AddNumbers(Result, strNumber);
+        textbox.value = Result;
+        AddNumbers(strNumber1, strNumber2);
         // reset input array
         value1 = [];
+        value2 = [];
+
         break;
     case 66:
         // Minus
-        textbox.value = "";
-        SubNumbers(Result, strNumber);
+        textbox.value = Result;
+        SubNumbers(strNumber1, strNumber2);
         // reset input array
         value1 = [];
+        value2 = [];
+
         break;
     case 77:
         // Multiply
-        textbox.value = "";
-        MultNumbers(Result, strNumber);
-        // reset input number
+        textbox.value = Result;
+        MultNumbers(strNumber1, strNumber2);
+        // reset input array
         value1 = [];
+        value2 = [];
+
         break;
     case 88:
         // Divide
-        textbox.value = "";
-        DivNumbers(Result, strNumber);
+        textbox.value = Result;
+        DivNumbers(strNumber1, strNumber2);
         // reset input number
         value1 = [];
+        value2 = [];
+
         break;
     case 99:
         // dot
@@ -195,33 +226,58 @@ function inputValue(bcode){
         displayResult(rcode)
         // reset input number
         value1 = [];
+        value2 = [];
+
         break;
     case 33:
         // AC
         // Reset result/variables to 0
         value1 = [];
+        value2 = [];
         Result = 0;
+        ResultA = 0;
+        ResultB = 0;
+        ResultMem = 1;
+        counter = 0;
+        rcode = 0;
+        ops = "";
         textbox.value = 0;
         break;
     }
 }
 
 function displayResult(rcode){
-  // concat input numbers to string   
-  let strNumber = value1.join("");
+    // Second Input Value
+    let strNumber2 = value2.join("");
 
-  switch (rcode) {
+    switch (rcode) {
     case 1:
-      AddNumbers(Result, strNumber);
-      break;
+        AddNumbers(Result, strNumber2);
+        ResultA = 0;
+        ResultB = 0;
+        ResultA = ResultMem;
+        break;
+
     case 2:
-      SubNumbers(Result, strNumber);
-      break;
+        SubNumbers(Result, strNumber2);
+        ResultA = 0;
+        ResultB = 0;
+        ResultA = ResultMem;
+        break;
+
     case 3:
-      MultNumbers(Result, strNumber);
-      break;
+        MultNumbers(Result, strNumber2);
+        ResultA = 0;
+        ResultB = 0;
+        ResultA = ResultMem;
+
+        break;
     case 4:
-      DivNumbers(Result, strNumber);
-      break;
-  }
+        DivNumbers(Result, strNumber2);
+        ResultA = 0;
+        ResultB = 0;
+        ResultA = ResultMem;
+
+        break;
+    }
 }
